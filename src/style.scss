@@ -1,0 +1,264 @@
+$transparentBlue : #EFFFFD;
+$lightBlue : #B8FFF9;
+$blue: #85F4FF;
+$darkBlue: #42C2FF;
+
+// css reseting
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    background-color: $lightBlue;
+    font-family: 'Signika Negative', sans-serif;
+}
+
+.formContainer{
+    .formWrapper{
+        padding: 20px 60px;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        .logo{
+            color: $darkBlue;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .title{
+            color: $darkBlue;
+            font-size: .75rem;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            input{
+                padding: 15px;
+                border: none;
+                border-bottom: 1px solid $blue;
+                min-width: 250px;
+
+                &::placeholder{
+                    color: rgb(175, 175, 175);
+                }
+            }
+
+            label{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: $darkBlue;
+                padding: 0 15px;
+                cursor: pointer;
+
+                span{
+                    font-size: .75rem;
+                }
+                
+                i{
+                    font-size: 2rem;
+                }
+            }
+
+            button{
+                background-color: $darkBlue;
+                border: none;
+                color: white;
+                padding: 10px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+
+        p{
+            color: $blue;
+            font-size: .75rem;
+            margin-top: 10px;
+        }
+    }
+}
+
+
+
+.home{
+    height: 100dvh;
+    width: 100dvw;
+    display: grid;
+    place-items: center;
+
+    .container{
+        border: 1px solid blue;
+        border-radius: 10px;
+        width: 65%;
+        height: 80%;
+        display: flex;
+        overflow: hidden;
+    }
+
+    .sidebar{
+        flex: 1;
+        border-right: 1px solid $darkBlue;
+        background-color: $blue;
+
+        .navbar{
+            display: flex;
+            align-items: center;
+            background-color: $darkBlue;
+            height: 50px;
+            padding: 10px;
+            justify-content: space-between;
+            color: white;
+
+            .logo{
+                font-weight: bold;
+            }
+
+            .user{
+                display: flex;
+                gap: 10px;
+
+                img{
+                    background-color: white;
+                    height: 24px;
+                    width: 24px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                button{
+                    background-color: $blue;
+                    border: none;
+                    font-size: .625rem;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+        
+        .search{
+            border-bottom: 1px solid gray;
+
+            .searchForm{
+                padding: 10px;
+
+                input{
+                    outline: none;
+                    border: none;
+                    background-color: transparent;
+                    // color: white;
+                }
+            }
+        }
+
+        .userChat{
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+
+            &:hover{
+                background-color: $darkBlue;
+            }
+
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .userChatInfo{
+                span{
+                    font-weight: 500;
+                    font-size: 1.125rem;
+                }
+
+                p{
+                    font-size: .875rem;
+                    color: lightslategrey;
+                }
+            }
+        }
+    }
+
+    .chatbox{
+        flex: 2;
+
+        .chatInfo{
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: $blue;
+            
+            .chatIcons{
+                display: flex;
+                gap: 15px;
+    
+                i{
+                    color: lightslategray;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .messages{
+            background-color: $lightBlue;
+            padding: 10px;
+            height: calc(100% - 160px); // height of other element
+            // border-right: .1px solid black;
+        }
+
+        .messageInput{
+            height: 50px;
+            padding: 10px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            input{
+                border: none;
+                outline: none;
+                width: 100%;
+                font-size: 1.125rem;
+
+                &::placeholder{
+                    color: lightgray;
+                }
+            }
+
+            .send{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                i{
+                    font-size: 24px;
+                    cursor: pointer;
+                }
+
+                button{
+                    border: none;
+                    padding: 10px;
+                    color: white;
+                    background-color: $darkBlue;
+                }
+            }
+             
+        }
+    }
+}
