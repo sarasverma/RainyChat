@@ -1,11 +1,24 @@
-import React from 'react'
+import React from "react";
 
 const MessageItem = () => {
   return (
-    <div>
-      Message
+    <div className="message owner">
+      <div className="messageInfo">
+        <img
+          src="https://images.unsplash.com/photo-1677512447102-237d00a3e902?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80"
+          alt="user"
+        />
+        <span>just now</span>
+      </div>
+      <div className="messageContent">
+        <p>Hello</p>
+        <img
+          src="https://images.unsplash.com/photo-1677512447102-237d00a3e902?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80"
+          alt="content"
+        />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default MessageItem
+export default MessageItem;
