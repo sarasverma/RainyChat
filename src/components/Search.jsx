@@ -1,20 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 const Search = () => {
+  const [username, setUsername] = useState("");
+  const [user, setUser] = useState(null);
+  const [status, setStatus] = useState(false);
+  const [err, setErr] = useState(false);
+
+  const handleSearch = async () => {
+    const q = query(
+      collection(db, "users"),
+      where("displayName", "==", username)
+    );
+
+    try {
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.docs.length === 0) {
+        setStatus("User not found");
+        setUser(null);
+      } else {
+        querySnapshot.forEach((doc) => {
+          setUser(doc.data());
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      setErr(true);
+    }
+  };
+
+  const handleKey = (e) => {
+    if (e.code === "Enter") {
+      handleSearch();
+    } else {
+      setStatus(false);
+    }
+  };
+
   return (
     <div className="search">
       <div className="searchForm">
-        <input type="text" placeholder="Find a user" />
-      </div>
-      <div className="userChat">
-        <img
-          src="https://images.unsplash.com/photo-1677512447102-237d00a3e902?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80"
-          alt="user"
+        <input
+          type="text"
+          placeholder="Find a user"
+          onKeyDown={handleKey}
+          onChange={(e) => setUsername(e.target.value)}
         />
-        <div className="userChatInfo">
-          <span>July</span>
-        </div>
       </div>
+      {status && <span>User not found</span>}
+      {err && <span className="error">Something went wrong</span>}
+      {user && (
+        <div className="userChat">
+          <img src={user.photoURL} alt="user" />
+          <div className="userChatInfo">
+            <span>{user.displayName}</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
