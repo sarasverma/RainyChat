@@ -16,7 +16,10 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
     } catch (err) {
-      setErr(true);
+      setErr(err);
+      setTimeout(() => {
+        setErr(false);
+      }, 3000);
     }
   };
 
@@ -26,10 +29,16 @@ const Login = () => {
         <span className="logo">Rainy Chat</span>
         <span className="title">Register</span>
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" autoComplete="on" />
+          <input type="email" placeholder="Email" required />
+          <input
+            type="password"
+            placeholder="Password"
+            autoComplete="on"
+            minLength={8}
+            required
+          />
           <button>Login</button>
-          {err && <span>Something went wrong</span>}
+          {err && <span className="error">{err.message}</span>}
         </form>
         <p>
           You don't have a account? <Link to="/register">Register</Link>

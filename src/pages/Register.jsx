@@ -27,8 +27,7 @@ const Register = () => {
 
       uploadTask.on(
         (error) => {
-          console.log(error);
-          setErr(true);
+          console.error(error);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -52,7 +51,10 @@ const Register = () => {
         }
       );
     } catch (err) {
-      setErr(true);
+      setErr(err);
+      setTimeout(() => {
+        setErr(false);
+      }, 3000);
     }
   };
 
@@ -76,7 +78,7 @@ const Register = () => {
             <span> Add a picture</span>
           </label>
           <button>Sign up</button>
-          {err && <span>Something went wrong</span>}
+          {err && <span className="error">{err.message}</span>}
         </form>
         <p>
           Already have a account? <Link to="/login">Login</Link>

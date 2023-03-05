@@ -79,6 +79,13 @@ body {
         font-weight: bold;
         cursor: pointer;
       }
+
+      .error {
+        font-weight: 300;
+        font-size: 0.75rem;
+        color: red;
+        text-align: center;
+      }
     }
 
     p {
@@ -124,12 +131,13 @@ body {
 
       .user {
         display: flex;
+        align-items: center;
         gap: 10px;
 
         img {
           background-color: white;
-          height: 24px;
-          width: 24px;
+          height: 35px;
+          width: 35px;
           border-radius: 50%;
           object-fit: cover;
         }
@@ -140,6 +148,8 @@ body {
           font-size: 0.625rem;
           color: white;
           cursor: pointer;
+          padding: 5px 10px;
+          border-radius: 5px;
         }
       }
     }
