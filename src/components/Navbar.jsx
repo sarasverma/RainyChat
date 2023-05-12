@@ -12,7 +12,9 @@ const Navbar = () => {
       <div className="user">
         <img src={currentUser.photoURL} alt="pic" />
         <span>{currentUser.displayName}</span>
-        <button onClick={() => signOut(auth)}>Log out</button>
+        <button onClick={() => signOut(auth)}>
+          <i className="fa-solid fa-right-from-bracket"></i>
+        </button>
       </div>
     </div>
   );

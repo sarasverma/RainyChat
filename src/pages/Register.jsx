@@ -7,6 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
   const [err, setErr] = useState(false);
+  const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,6 +27,8 @@ const Register = () => {
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
+        "state_changed",
+        null,
         (error) => {
           console.error(error);
         },
@@ -72,10 +75,17 @@ const Register = () => {
             minLength={8}
             autoComplete="on"
           />
-          <input type="file" id="file" style={{ display: "none" }} />
+          <input
+            type="file"
+            id="file"
+            style={{ display: "none" }}
+            onChange={(e) => {
+              e.target?.files[0] && setFileName(e.target.files[0].name);
+            }}
+          />
           <label htmlFor="file">
             <i className="fa-regular fa-image"></i>
-            <span> Add a picture</span>
+            <span>{`${fileName ? fileName : "Add a picture"}`}</span>
           </label>
           <button>Sign up</button>
           {err && <span className="error">{err.message}</span>}

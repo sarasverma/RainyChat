@@ -102,7 +102,7 @@ const Search = () => {
           value={username}
         />
       </div>
-      {status && <span>User not found</span>}
+      {status && <span className="error">User not found</span>}
       {err && <span className="error">Something went wrong</span>}
       {user && (
         <div className="userChat" onClick={handleSelect}>

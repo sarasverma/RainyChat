@@ -1,7 +1,8 @@
-$transparentBlue: #effffd;
-$lightBlue: #b8fff9;
-$blue: #85f4ff;
-$darkBlue: #42c2ff;
+$transparentBlue: #82a6cb;
+$paleBlue: #2c74b3;
+$lightBlue: #205295;
+$blue: #144272;
+$darkBlue: #0a2647;
 
 // css reseting
 * {
@@ -9,11 +10,27 @@ $darkBlue: #42c2ff;
   padding: 0;
 }
 
+// change default scrollbar
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: $blue;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $darkBlue;
+}
+
 body {
   min-height: 100dvh;
   display: grid;
   place-items: center;
-  background-color: $lightBlue;
+  background-color: $paleBlue;
   font-family: "Signika Negative", sans-serif;
 }
 
@@ -28,7 +45,7 @@ body {
     gap: 10px;
 
     .logo {
-      color: $darkBlue;
+      color: $blue;
       font-size: 1.5rem;
       font-weight: bold;
     }
@@ -46,7 +63,7 @@ body {
       input {
         padding: 15px;
         border: none;
-        border-bottom: 1px solid $blue;
+        border-bottom: 1px solid $lightBlue;
         min-width: 250px;
 
         &::placeholder {
@@ -58,7 +75,7 @@ body {
         display: flex;
         align-items: center;
         gap: 10px;
-        color: $darkBlue;
+        color: $lightBlue;
         padding: 0 15px;
         cursor: pointer;
 
@@ -72,7 +89,7 @@ body {
       }
 
       button {
-        background-color: $darkBlue;
+        background-color: $lightBlue;
         border: none;
         color: white;
         padding: 10px;
@@ -103,7 +120,7 @@ body {
   place-items: center;
 
   .container {
-    border: 1px solid blue;
+    border: 1px solid white;
     border-radius: 10px;
     width: 65%;
     height: 80%;
@@ -143,19 +160,20 @@ body {
         }
 
         button {
-          background-color: $blue;
           border: none;
-          font-size: 0.625rem;
-          color: white;
+          outline: none;
           cursor: pointer;
-          padding: 5px 10px;
-          border-radius: 5px;
+          background-color: transparent;
+          i {
+            color: white;
+            font-size: 1.5rem;
+          }
         }
       }
     }
 
     .search {
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid whitesmoke;
 
       .searchForm {
         padding: 10px;
@@ -164,8 +182,17 @@ body {
           outline: none;
           border: none;
           background-color: transparent;
-          // color: white;
+          color: white;
+
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.781);
+          }
         }
+      }
+
+      .error {
+        color: red;
+        margin-left: 10px;
       }
     }
 
@@ -175,6 +202,7 @@ body {
       align-items: center;
       gap: 10px;
       cursor: pointer;
+      color: white;
 
       &:hover {
         background-color: $darkBlue;
@@ -195,7 +223,7 @@ body {
 
         p {
           font-size: 0.875rem;
-          color: lightslategrey;
+          color: whitesmoke;
         }
       }
     }
@@ -203,6 +231,7 @@ body {
 
   .chatbox {
     flex: 2;
+    background-color: $transparentBlue;
 
     .chatInfo {
       height: 50px;
@@ -211,20 +240,21 @@ body {
       justify-content: space-between;
       padding: 10px;
       background-color: $blue;
+      color: white;
 
       .chatIcons {
         display: flex;
         gap: 15px;
 
         i {
-          color: lightslategray;
+          color: whitesmoke;
           cursor: pointer;
         }
       }
     }
 
     .messages {
-      background-color: $lightBlue;
+      background-color: $transparentBlue;
       padding: 10px;
       height: calc(100% - 160px); // height of other element
       overflow-y: scroll;
@@ -237,7 +267,6 @@ body {
         .messageInfo {
           display: flex;
           flex-direction: column;
-          color: gray;
           font-weight: 300;
 
           img {
@@ -273,7 +302,8 @@ body {
             align-items: flex-end;
 
             p {
-              background-color: $blue;
+              background-color: $paleBlue;
+              color: white;
               border-radius: 10px 0 10px 10px;
             }
           }
