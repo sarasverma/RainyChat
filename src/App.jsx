@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import RainEffect from "./components/RainEffect";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <RainEffect />
       <BrowserRouter>
         <Routes>
           <Route path="/">
